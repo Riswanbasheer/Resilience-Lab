@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ResilienceLab</title>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim')</script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D10;--panel:#12151A;--line:#262A31;--mute:#3A3F47;--text:#ECEAE4;--dim:#A7A8A3;--ember:#FF6B3D;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter Tight',system-ui,sans-serif;overflow-x:clip}
+a{color:inherit;text-decoration:none}a:hover{color:var(--ember)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+.mono{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.serif{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:-.025em}
+#prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;width:100%;height:3px;background:var(--ember);transform:scaleX(0);transform-origin:left;z-index:50}
+nav{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:28px;padding-bottom:28px}
+nav .links{display:flex;align-items:center;gap:32px;flex-wrap:wrap;font-size:15px;color:var(--dim)}
+.logo{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:600;color:var(--text)}
+.pill{display:inline-block;border-radius:999px;font-weight:600;font-size:16px;padding:16px 28px}
+.pri{background:var(--ember);color:var(--bg)}.pri:hover{color:var(--bg);background:#ff8460}
+.sec{border:1px solid var(--mute)}
+h1{margin:24px 0 0;font-size:clamp(48px,8.4vw,120px);line-height:.96;max-width:1000px;will-change:transform}
+h2{margin:16px 0 0;font-size:clamp(36px,5vw,64px);line-height:1}
+.lead{margin:32px 0 0;max-width:620px;font-size:20px;line-height:1.55;color:var(--dim)}
+.card{border:1px solid var(--line);border-radius:24px;background:var(--panel);padding:32px}
+.band{padding:0}
+#word{white-space:nowrap;font-size:clamp(90px,19vw,280px);line-height:1;color:var(--text);will-change:transform}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.steps div{background:var(--bg);padding:32px}
+.steps b{font-family:'JetBrains Mono',monospace;color:var(--ember);font-size:14px;font-weight:400}
+.steps h3{margin:20px 0 12px;font-size:22px;font-weight:500}.steps p{margin:0;color:var(--dim);line-height:1.6}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center}
+.cta{border-radius:32px;background:var(--text);color:var(--bg);padding:clamp(40px,7vw,96px);text-align:center}
+.legend{display:flex;gap:28px;flex-wrap:wrap;margin-top:12px;font-size:14px;color:var(--dim)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:8px;vertical-align:-2px}
+.ctl{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.btn{font:500 15px 'Inter Tight',sans-serif;color:var(--text);background:none;border:1px solid var(--mute);border-radius:999px;padding:12px 20px;min-height:44px;cursor:pointer}.btn:hover{border-color:var(--ember)}.btn.go{background:var(--ember);color:var(--bg);border-color:var(--ember);font-weight:600}.btn[aria-pressed=true]{border-color:var(--ember);color:var(--ember)}.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px}.kp div{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px}.kp small{display:block;font:400 11px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--dim)}.kp b{display:block;margin-top:8px;font:400 76px/1 'Instrument Serif',serif}.lab2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:24px;align-items:start}table{width:100%;border-collapse:collapse;font-size:15px;min-width:460px}th{text-align:left;color:var(--dim);font:400 11px 'JetBrains Mono',monospace;letter-spacing:.08em;padding-bottom:10px}td{padding:12px 8px 12px 0;border-top:1px solid var(--line)}.chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--mute);color:var(--dim)}.chip.dn{background:var(--ember);color:var(--bg);border-color:var(--ember)}.chip.ok{color:var(--text)}.nd rect{fill:#12151A;stroke:#3A3F47;stroke-width:2;transition:fill .4s,stroke .4s}.nd text{fill:#ECEAE4}.nd.dn rect{fill:#FF6B3D;stroke:#FF6B3D}.nd.dn text{fill:#0B0D10;font-weight:600}.ed{fill:none;stroke:#3A3F47;stroke-width:2;stroke-dasharray:5 5;transition:stroke .4s}.ed.dn{stroke:#FF6B3D;stroke-dasharray:none}#log{font:400 13px/1.5 'JetBrains Mono',monospace;margin-top:20px;max-height:190px;overflow:auto;display:flex;flex-direction:column-reverse;gap:8px;color:var(--dim)}
+[hidden]{display:none!important}
+.fi{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:400 15px 'Inter Tight',sans-serif;min-height:44px}.fi:focus{outline:2px solid var(--ember);outline-offset:1px}
+.er{display:grid;grid-template-columns:1.4fr .8fr .6fr 1.8fr 44px;gap:8px;margin-top:8px;min-width:640px;align-items:center}
+.lb{font:400 11px 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--dim)}
+#orb span{position:absolute;left:50%;top:50%;font:400 40px/1 'Instrument Serif',serif;color:var(--text);will-change:transform}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:56px;font-size:14px;color:var(--dim)}
+.scroll{overflow-x:auto}
+.anim .w{display:inline-block;animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.anim .up{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+.anim .rv{opacity:0;transform:translateY(80px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.anim .rv.in{opacity:1;transform:none}
+.anim .gr{transform-box:fill-box;transform-origin:left center;transform:scaleX(0);transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
+.anim .tl.in .gr{transform:scaleX(1)}
+.anim .dr{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s ease}
+.anim .cg.in .dr{stroke-dashoffset:0}
+@media (max-width:640px){.wrap{padding-left:20px;padding-right:20px}nav .links{gap:20px}}
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+
+<nav class="wrap">
+<a class="logo" href="#top"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#ECEAE4" stroke-width="1.5"/><path d="M3 15h7l3-7 4 14 3-7h7" fill="none" stroke="#FF6B3D" stroke-width="1.8" stroke-linejoin="round"/></svg>ResilienceLab</a>
+<div class="links"><a href="#method">Method</a><a href="#cascade">Cascade</a><a href="#cta">Principles</a><a href="#simulator" class="pill" style="background:var(--text);color:var(--bg);padding:12px 20px;font-size:15px;font-weight:500">Run a scenario</a></div>
+</nav>
+<div id="pg-home">
+
+<header id="top" class="wrap" style="padding-top:72px;padding-bottom:16px">
+<div class="mono up" style="color:var(--ember)">Business impact analysis + incident simulation</div>
+<h1 id="hero" class="serif"><span class="w" style="animation-delay:.1s">Rehearse</span> <span class="w" style="animation-delay:.2s">the</span> <span class="w" style="animation-delay:.3s">worst</span> <span class="w" style="animation-delay:.4s">day,</span> <span class="w" style="animation-delay:.55s;color:var(--ember);font-style:italic">before</span> <span class="w" style="animation-delay:.7s">it</span> <span class="w" style="animation-delay:.8s">arrives.</span></h1>
+<p class="lead up" style="animation-delay:1s">ResilienceLab models how your business depends on its systems, then breaks them on purpose. See which processes fail, how long they stay down, and what every hour costs.</p>
+<div class="up" style="animation-delay:1.2s;margin-top:40px;display:flex;gap:16px;flex-wrap:wrap"><a href="#simulator" class="pill pri">Trigger an incident</a><a href="#method" class="pill sec">See the method</a></div>
+</header>
+
+<div class="band" aria-hidden="true"><div id="orb" style="position:relative;height:190px;max-width:480px;margin:0 auto"></div></div>
+
+<section id="sim" class="wrap" style="padding-top:0;padding-bottom:80px">
+<div class="card rv">
+<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim)"><span>SCENARIO / RANSOMWARE ON PRIMARY DATABASE</span><span style="color:var(--ember)">SAMPLE DATA</span></div>
+<div class="scroll tl" style="margin-top:20px">
+<svg viewBox="0 0 960 310" width="100%" style="min-width:720px" role="img" aria-label="Recovery timeline: online payments and order processing miss their recovery time objectives; support and reporting stay within target.">
+<g font-family="JetBrains Mono, monospace" font-size="12" fill="#A7A8A3"><text x="190" y="30" text-anchor="middle">0h</text><text x="310" y="30" text-anchor="middle">2h</text><text x="430" y="30" text-anchor="middle">4h</text><text x="550" y="30" text-anchor="middle">6h</text><text x="670" y="30" text-anchor="middle">8h</text><text x="790" y="30" text-anchor="middle">10h</text><text x="910" y="30" text-anchor="middle">12h</text></g>
+<g stroke="#262A31"><line x1="190" y1="44" x2="190" y2="276"/><line x1="310" y1="44" x2="310" y2="276"/><line x1="430" y1="44" x2="430" y2="276"/><line x1="550" y1="44" x2="550" y2="276"/><line x1="670" y1="44" x2="670" y2="276"/><line x1="790" y1="44" x2="790" y2="276"/><line x1="910" y1="44" x2="910" y2="276"/></g>
+<g font-family="Inter Tight, sans-serif" font-size="15" fill="#ECEAE4"><text x="0" y="80">Online payments</text><text x="0" y="140">Order processing</text><text x="0" y="200">Customer support</text><text x="0" y="260">Reporting</text></g>
+<rect class="gr" x="190" y="64" width="120" height="22" rx="4" fill="#3A3F47"/><rect class="gr" style="transition-delay:.35s" x="310" y="64" width="180" height="22" rx="4" fill="#FF6B3D"/>
+<rect class="gr" style="transition-delay:.2s" x="190" y="124" width="240" height="22" rx="4" fill="#3A3F47"/><rect class="gr" style="transition-delay:.6s" x="430" y="124" width="120" height="22" rx="4" fill="#FF6B3D"/>
+<rect class="gr" style="transition-delay:.4s" x="250" y="184" width="240" height="22" rx="4" fill="#3A3F47"/>
+<rect class="gr" style="transition-delay:.6s" x="370" y="244" width="420" height="22" rx="4" fill="#3A3F47"/>
+<g stroke="#ECEAE4" stroke-width="2"><line x1="310" y1="56" x2="310" y2="94"/><line x1="430" y1="116" x2="430" y2="154"/><line x1="670" y1="176" x2="670" y2="214"/><line x1="910" y1="236" x2="910" y2="274"/></g>
+</svg>
+</div>
+<div class="legend"><span><i style="background:#3A3F47"></i>Within target</span><span><i style="background:#FF6B3D"></i>Recovery target breached</span><span><i style="width:2px;background:#ECEAE4;margin-right:8px"></i>RTO marker</span></div>
+</div>
+</section>
+
+<section id='lab' class='wrap' style='padding-top:40px;padding-bottom:100px'><div class='card rv' style='text-align:center;padding:clamp(32px,6vw,72px)'><div class='mono' style='color:var(--ember)'>Live simulator</div><h2 class='serif' style='margin:16px auto 0;max-width:720px'>Build your own business. Then break it.</h2><p class='lead' style='margin:24px auto 0'>Describe your systems, set what depends on what, choose what fails and watch the cost climb.</p><a href='#simulator' class='pill pri' style='margin-top:36px'>Open the simulator</a></div></section>
+
+<section id="method" class="wrap" style="padding-top:40px;padding-bottom:100px">
+<div class="mono" style="color:var(--ember)">The method</div>
+<h2 class="serif rv" style="margin-bottom:56px;max-width:760px">From dependency map to decision, in four moves.</h2>
+<div class="steps rv">
+<div><b>01</b><h3>Map</h3><p>List business processes and the systems each one depends on.</p></div>
+<div><b>02</b><h3>Target</h3><p>Set a recovery time (RTO), a data-loss limit (RPO) and an hourly cost for each process.</p></div>
+<div><b>03</b><h3>Break</h3><p>Trigger a scenario and watch failures cascade through the dependency graph.</p></div>
+<div><b>04</b><h3>Treat</h3><p>Compare mitigate, transfer, avoid and accept, then re-run to see the gap close.</p></div>
+</div>
+</section>
+
+<section id="cascade" class="wrap split" style="padding-bottom:100px">
+<div class="rv">
+<div class="mono" style="color:var(--ember)">Cascade engine</div>
+<h2 class="serif" style="margin-bottom:24px">One failure never stays one failure.</h2>
+<p style="margin:0;font-size:18px;line-height:1.6;color:var(--dim)">A database outage takes the API down, and the API takes payments and orders with it. ResilienceLab follows every dependency so you see the full blast radius, not just the first system that broke.</p>
+</div>
+<div class="card rv cg" style="padding:24px">
+<svg viewBox="0 0 560 330" width="100%" role="img" aria-label="Dependency graph: a failed database cascades to the API gateway, payments and orders, while auth and the support portal stay up.">
+<g stroke-width="2" fill="none"><path class="dr" pathLength="1" d="M140 174H200" stroke="#FF6B3D"/><path d="M140 174C170 174 170 244 200 244" stroke="#3A3F47" stroke-dasharray="5 5"/><path class="dr" pathLength="1" style="transition-delay:.5s" d="M320 104C355 104 355 64 390 64" stroke="#FF6B3D"/><path class="dr" pathLength="1" style="transition-delay:.7s" d="M320 104C355 104 355 174 390 174" stroke="#FF6B3D"/><path d="M320 244C355 244 355 284 390 284" stroke="#3A3F47" stroke-dasharray="5 5"/></g>
+<g font-family="Inter Tight, sans-serif" font-size="15" text-anchor="middle">
+<rect x="20" y="150" width="120" height="48" rx="12" fill="#FF6B3D"/><text x="80" y="179" fill="#0B0D10" font-weight="600">Database</text>
+<rect x="200" y="80" width="120" height="48" rx="12" fill="#12151A" stroke="#FF6B3D" stroke-width="2"/><text x="260" y="109" fill="#ECEAE4">API gateway</text>
+<rect x="200" y="220" width="120" height="48" rx="12" fill="#12151A" stroke="#3A3F47" stroke-width="2"/><text x="260" y="249" fill="#A7A8A3">Auth</text>
+<rect x="390" y="40" width="150" height="48" rx="12" fill="#12151A" stroke="#FF6B3D" stroke-width="2"/><text x="465" y="69" fill="#ECEAE4">Payments</text>
+<rect x="390" y="150" width="150" height="48" rx="12" fill="#12151A" stroke="#FF6B3D" stroke-width="2"/><text x="465" y="179" fill="#ECEAE4">Orders</text>
+<rect x="390" y="260" width="150" height="48" rx="12" fill="#12151A" stroke="#3A3F47" stroke-width="2"/><text x="465" y="289" fill="#A7A8A3">Support portal</text>
+</g>
+</svg>
+</div>
+</section>
+
+<section id="cta" class="wrap" style="padding-bottom:100px">
+<div class="cta rv">
+<h2 class="serif" style="margin:0 auto;font-size:clamp(40px,6.4vw,88px);line-height:.98;max-width:880px">Know your breaking point.</h2>
+<p style="margin:28px auto 0;max-width:560px;font-size:19px;line-height:1.55;color:var(--mute)">Built on the risk management lifecycle: identify, analyze, evaluate, treat, monitor.</p>
+<a href="#simulator" class="pill" style="margin-top:40px;background:var(--bg);color:var(--text)">Start a simulation</a>
+</div>
+</section>
+
+</div>
+<div id='pg-sim' hidden><div class='wrap' style='padding-top:32px;padding-bottom:100px'>
+<a href='#top' class='mono' style='color:var(--dim)'>&larr; Home</a>
+<h1 class='serif' style='font-size:clamp(44px,7vw,92px);margin:20px 0 0;line-height:1'>Live simulator</h1>
+<p class='lead'>Load an example or describe your own business: list your systems, say what depends on what, choose what fails first, then run the incident.</p>
+<div class='card' style='margin-top:40px'>
+<div class='mono' style='color:var(--ember)'>Step 1: describe it</div>
+<div class='ctl' style='margin-top:16px'><span style='color:var(--dim);font-size:15px'>Load an example:</span><button class='btn' type='button' data-p='store'>Online store</button><button class='btn' type='button' data-p='clinic'>Clinic</button><button class='btn' type='button' data-p='blank'>Blank</button></div>
+<div class='scroll' style='margin-top:12px'><div id='ed'></div></div>
+<div class='ctl' style='margin-top:20px;gap:20px'><button id='add' class='btn' type='button'>+ Add system</button><label style='display:flex;align-items:center;gap:10px;font-size:15px;color:var(--dim)'>What fails first<select id='fs' class='fi' style='width:auto'></select></label><label style='display:flex;align-items:center;gap:10px;font-size:15px;color:var(--dim)'>Hours to restore it<input id='rh' class='fi' type='number' min='0.1' step='0.5' value='5' style='width:110px'></label></div>
+<p style='margin:16px 0 0;font-size:13px;line-height:1.5;color:var(--dim)'>Everything that depends on the failed system goes down one step at a time (6 minutes per step) and recovers in the same order. Cost is per hour of downtime and RTO is the recovery time target in hours; leave RTO at 0 if there is none. The samples are made-up numbers, so use your own.</p></div>
+<div class='card' style='margin-top:24px'>
+<div class='mono' style='color:var(--ember)'>Step 2: run the incident</div>
+<div class='ctl' style='margin-top:16px'><button id='go' class='btn go' type='button'>Start simulation</button><button id='rs' class='btn' type='button'>Reset</button></div>
+<div class='ctl' style='margin-top:16px' role='group' aria-label='Risk treatment'><button class='btn' data-k='accept' aria-pressed='true' type='button'>Accept <span id='p-accept' style='font-weight:400;font-size:13px;color:var(--dim)'></span></button><button class='btn' data-k='mitigate' aria-pressed='false' type='button'>Mitigate: warm standby <span id='p-mitigate' style='font-weight:400;font-size:13px;color:var(--dim)'></span></button><button class='btn' data-k='transfer' aria-pressed='false' type='button'>Transfer: cyber insurance <span id='p-transfer' style='font-weight:400;font-size:13px;color:var(--dim)'></span></button><button class='btn' data-k='avoid' aria-pressed='false' type='button'>Avoid: decouple costliest link <span id='p-avoid' style='font-weight:400;font-size:13px;color:var(--dim)'></span></button></div>
+<div class='kp'><div><small>ELAPSED</small><b id='kClock'>T+00:00</b></div><div><small>LOSS SO FAR</small><b id='kLoss' style='color:var(--ember)'>$0</b></div><div><small>NET LOSS AFTER TREATMENT</small><b id='kNet'>$0</b></div><div><small>RTO BREACHES</small><b id='kBr'>0</b></div></div>
+<div class='lab2'><div class='scroll'><table><thead><tr><th>SYSTEM</th><th>STATE</th><th>RTO STATUS</th><th>COST / HOUR</th></tr></thead><tbody id='tb'></tbody></table></div><div class='scroll'><svg id='gv' width='100%' style='min-width:420px' role='img' aria-label='Live dependency graph that turns ember as systems fail' font-family='Inter Tight, sans-serif' font-size='13' text-anchor='middle'></svg></div></div>
+<div id='log' aria-live='off'></div></div>
+</div></div>
+<footer class="wrap"><span>ResilienceLab</span><span>Security Risk Management Principles project</span></footer>
+
+<script>
+(function(){var d=document,$=function(i){return d.getElementById(i)},prog=$('prog'),hero=$('hero'),anim=d.documentElement.classList.contains('anim');
+var N=180,orb=$('orb'),Pt=anim?0:1,Pc=Pt,ph=0,lastY=scrollY;
+orb.style.height='auto';
+orb.innerHTML="<svg viewBox='0 0 400 240' width='100%' style='display:block;max-width:290px;margin:0 auto'><defs><radialGradient id='og' cx='50%' cy='50%' r='50%'><stop offset='0' stop-color='#FF6B3D' stop-opacity='.16'/><stop offset='1' stop-color='#FF6B3D' stop-opacity='0'/></radialGradient><linearGradient id='rg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#F4F2EC'/><stop offset='1' stop-color='#7E807C'/></linearGradient></defs><ellipse cx='200' cy='130' rx='190' ry='100' fill='url(#og)'/><g id='bk' fill='none' stroke='#FF6B3D' stroke-opacity='.35' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'></g><text x='200' y='186' text-anchor='middle' font-family='Instrument Serif, serif' font-size='190' fill='url(#rg)'>R</text><g id='fr' fill='none' stroke='#FF6B3D' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' style='filter:drop-shadow(0 0 5px rgba(255,107,61,.5))'></g></svg>";
+function pt(t,w){var th=t*18.85+ph,x0=60+t*280,y0=214,x1=200+Math.cos(th)*84,y1=62+t*118+Math.sin(th)*16;return[x0+(x1-x0)*w,y0+(y1-y0)*w,Math.sin(th),w]}
+function orbit(){var y=scrollY,dy=y-lastY;lastY=y;if(anim){Pt=Math.min(1,Pt+Math.abs(dy)*.0035);ph+=dy*.01*(.3+Pc)}
+Pc+=(Pt-Pc)*.1;var P=[],k,t,w;
+for(k=0;k<=N;k++){t=k/N;w=Math.max(0,Math.min(1,Pc*1.5-(1-t)*.5));w=w*w*(3-2*w);P.push(pt(t,w))}
+var B='',F='',run=[P[0]],fs=P[0][2]*P[0][3]>=0;
+function flush(){if(run.length>1){var d='<path d="M'+run.map(function(q){return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join('L')+'"/>';if(fs)F+=d;else B+=d}}
+for(k=1;k<=N;k++){var q=P[k],f=q[2]*q[3]>=0;if(f!==fs){run.push(q);flush();run=[q];fs=f}else run.push(q)}
+flush();$('bk').innerHTML=B;$('fr').innerHTML=F}
+function loop(){if(!$('pg-home').hidden)orbit();if(anim)requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function tick(){var y=scrollY,h=d.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';if(!anim)return;var k=Math.min(1,y/700);hero.style.transform='translateY('+(k*140)+'px)';hero.style.opacity=1-.9*k}
+var q=false;addEventListener('scroll',function(){if(!q){q=true;requestAnimationFrame(function(){q=false;tick()})}},{passive:true});addEventListener('resize',tick);
+if(anim&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});d.querySelectorAll('.rv,.tl,.cg').forEach(function(el){io.observe(el)})}else{d.querySelectorAll('.rv,.tl,.cg').forEach(function(el){el.classList.add('in')})}
+function route(){var h=location.hash.slice(1),sim=h==='simulator';$('pg-home').hidden=sim;$('pg-sim').hidden=!sim;if(sim)scrollTo(0,0);else if(h&&$(h))$(h).scrollIntoView();else scrollTo(0,0);tick()}
+addEventListener('hashchange',route);route();})();
+</script>
+<script>
+(function(){var d=document,$=function(i){return d.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+var PRE={store:{f:0,R:5,s:[['Database',0,0,''],['API gateway',0,0,'Database'],['Payments',25000,2,'API gateway'],['Orders',18000,4,'API gateway'],['Auth',0,0,''],['Customer support',3000,8,'Auth']]},clinic:{f:0,R:3,s:[['Patient records server',0,0,''],['Appointment booking',4000,4,'Patient records server'],['Pharmacy system',9000,1,'Patient records server'],['Billing',6000,24,'Appointment booking'],['Reception desk',2000,8,'Appointment booking']]},blank:{f:0,R:4,s:[['Core system',0,0,''],['My process',1000,4,'Core system']]}};
+var TK=['accept','mitigate','transfer','avoid'],M,cur='accept',t=0,run=false,begun=false,last=0,li=0,EV=[],m,ND=[],ED=[];
+function fmt(h){var x=Math.round(h*60);return Math.floor(x/60)+'h '+('0'+x%60).slice(-2)+'m'}
+function usd(n){return '$'+Math.round(n).toLocaleString('en-US')}
+function clk(h){h=Math.max(h,0);return 'T+'+('0'+Math.floor(h)).slice(-2)+':'+('0'+Math.floor((h%1)*60)).slice(-2)}
+function nm(i){return M.s[i].n.trim()||'(unnamed)'}
+function model(k){var S=M.s,n=S.length,ix={};S.forEach(function(s,i){ix[s.n.trim().toLowerCase()]=i});
+var dp=S.map(function(s,i){return s.d.split(',').map(function(x){return ix[x.trim().toLowerCase()]}).filter(function(j){return j!==undefined&&j!==i})});
+function bfs(rm){var h=S.map(function(){return -1}),q=[M.f],u,i;h[M.f]=0;while(q.length){u=q.shift();for(i=0;i<n;i++){if(h[i]<0&&dp[i].indexOf(u)>=0&&!(rm&&rm[0]==u&&rm[1]==i)){h[i]=h[u]+1;q.push(i)}}}return h}
+var h=bfs(null),rm=null,i;
+if(k=='avoid'){var b=-1;for(i=0;i<n;i++)if(h[i]==1&&(b<0||S[i].c>S[b].c))b=i;if(b>=0){rm=[M.f,b];h=bfs(rm)}}
+var R=M.R*(k=='mitigate'?.1:1),st=[],en=[],loss=0,end=0;
+for(i=0;i<n;i++){if(h[i]<0){st.push(-1);en.push(-1)}else{st.push(h[i]*.1);en.push(R+h[i]*.1);loss+=S[i].c*R;end=Math.max(end,en[i])}}
+return{h:h,st:st,en:en,dp:dp,R:R,ins:k=='transfer'?.6:0,loss:loss,end:end+.2}}
+function lvls(dp){var n=dp.length,L=[],i;function go(i,dd){if(dd>n)return 0;var x=0;dp[i].forEach(function(j){x=Math.max(x,go(j,dd+1)+1)});return x}for(i=0;i<n;i++)L.push(go(i,0));return L}
+function draw(){var Lv=lvls(m.dp),cols=Math.max.apply(null,Lv)+1,cnt=[],pos=[],rows=1,g='',e='',tb='';
+Lv.forEach(function(l,i){cnt[l]=cnt[l]||0;pos[i]=[10+l*190,10+cnt[l]*62];cnt[l]++;rows=Math.max(rows,cnt[l])});
+m.dp.forEach(function(a,i){a.forEach(function(j){var x1=pos[j][0]+130,y1=pos[j][1]+20,x2=pos[i][0],y2=pos[i][1]+20;e+='<path class="ed" d="M'+x1+' '+y1+'C'+(x1+30)+' '+y1+' '+(x2-30)+' '+y2+' '+x2+' '+y2+'"/>'});});
+M.s.forEach(function(s,i){var nmx=nm(i);if(nmx.length>17)nmx=nmx.slice(0,16)+'…';g+='<g class="nd"><rect x="'+pos[i][0]+'" y="'+pos[i][1]+'" width="130" height="40" rx="10"/><text x="'+(pos[i][0]+65)+'" y="'+(pos[i][1]+25)+'">'+esc(nmx)+'</text></g>';tb+='<tr><td>'+esc(nm(i))+'</td><td><span class="chip" id="c'+i+'">UP</span></td><td id="r'+i+'">Not affected</td><td>'+usd(s.c)+'</td></tr>'});
+$('gv').setAttribute('viewBox','0 0 '+(cols*190-40)+' '+(rows*62+10));$('gv').innerHTML=e+g;$('tb').innerHTML=tb;
+ED=[];var pe=$('gv').querySelectorAll('.ed'),k=0;m.dp.forEach(function(a,i){a.forEach(function(j){ED.push([j,i,pe[k++]])})});ND=$('gv').querySelectorAll('.nd')}
+function evs(){var a=[[0,nm(M.f)+' fails']],i;for(i=0;i<M.s.length;i++){if(m.st[i]<0)continue;var r=M.s[i].r;if(i!=M.f)a.push([m.st[i],nm(i)+' goes down']);if(r>0&&m.R>r)a.push([m.st[i]+r,nm(i)+' RTO breached']);a.push([m.en[i],nm(i)+(i==M.f?' restored':' recovered')])}return a.sort(function(x,y){return x[0]-y[0]})}
+function render(){var tt=begun?t:-1,L=0,br=0,nr=0,dn=[];
+M.s.forEach(function(s,i){var c=$('c'+i),r=$('r'+i),st=m.st[i],en=m.en[i];if(st<0){dn[i]=false;ND[i].classList.remove('dn');c.className='chip';c.textContent='UP';r.textContent='Not affected';return}
+var d1=tt>=st&&tt<en,dn2=tt>=en,dt=tt<st?0:Math.min(tt,en)-st,over=s.r>0&&dt>s.r;dn[i]=d1;ND[i].classList.toggle('dn',d1);L+=dt*s.c;if(s.r>0)nr++;if(over)br++;
+c.className='chip'+(d1?' dn':(dn2?' ok':''));c.textContent=d1?'DOWN':(dn2?'RESTORED':'UP');
+r.textContent=tt<st?(s.r>0?'RTO '+s.r+'h':'No RTO set'):(d1?(s.r>0?(over?'Breached by '+fmt(dt-s.r):fmt(s.r-dt)+' left of '+s.r+'h'):'Down '+fmt(dt)):'Down '+fmt(dt)+(over?', RTO breached':(s.r>0?', within RTO':'')))});
+ED.forEach(function(x){x[2].classList.toggle('dn',!!dn[x[0]]&&!!dn[x[1]])});
+$('kClock').textContent=clk(tt);$('kLoss').textContent=usd(L);$('kNet').textContent=usd(L*(1-m.ins));$('kBr').textContent=br+' of '+nr;
+while(begun&&EV[li]&&EV[li][0]<=t){var p=d.createElement('div');p.textContent=clk(EV[li][0])+'  '+EV[li][1];$('log').appendChild(p);li++}}
+function reset(redraw){t=0;run=false;begun=false;li=0;m=model(cur);EV=evs();$('log').innerHTML='';$('go').textContent='Start simulation';if(redraw){draw();TK.forEach(function(k){var x=model(k);$('p-'+k).textContent='(net loss '+usd(x.loss*(1-x.ins))+')'})}render()}
+function frame(ts){if(!run)return;t+=(ts-last)/6000;last=ts;if(t>=m.end){t=m.end;run=false;$('go').textContent='Run again'}render();if(run)requestAnimationFrame(frame)}
+$('go').onclick=function(){if(begun&&t>=m.end)reset(false);run=!run;if(run){begun=true;last=performance.now();requestAnimationFrame(frame);this.textContent='Pause'}else{this.textContent='Resume'}};
+$('rs').onclick=function(){reset(false)};
+function edit(){var h='<div class="er lb"><span>SYSTEM OR PROCESS</span><span>COST PER HOUR</span><span>RTO (HOURS)</span><span>DEPENDS ON (NAMES, COMMA SEPARATED)</span><span></span></div>';M.s.forEach(function(x,i){h+='<div class="er"><input class="fi" data-i="'+i+'" data-f="n" value="'+esc(x.n)+'" aria-label="Name"><input class="fi" type="number" min="0" data-i="'+i+'" data-f="c" value="'+x.c+'" aria-label="Cost per hour"><input class="fi" type="number" min="0" step="0.5" data-i="'+i+'" data-f="r" value="'+x.r+'" aria-label="RTO hours"><input class="fi" data-i="'+i+'" data-f="d" value="'+esc(x.d)+'" aria-label="Depends on"><button type="button" class="btn" data-x="'+i+'" aria-label="Remove '+esc(x.n)+'" style="padding:0">×</button></div>'});$('ed').innerHTML=h}
+function opts(){$('fs').innerHTML=M.s.map(function(x,i){return '<option value="'+i+'">'+esc(x.n.trim()||'(unnamed)')+'</option>'}).join('');$('fs').value=M.f}
+function load(k){var p=PRE[k];M={f:p.f,R:p.R,s:p.s.map(function(x){return{n:x[0],c:x[1],r:x[2],d:x[3]}})};edit();opts();$('rh').value=M.R;reset(true)}
+$('ed').addEventListener('input',function(e){var el=e.target,i=el.getAttribute('data-i');if(i===null)return;var f=el.getAttribute('data-f');M.s[i][f]=(f=='c'||f=='r')?Math.max(0,parseFloat(el.value)||0):el.value;reset(true)});
+$('ed').addEventListener('change',function(e){if(e.target.getAttribute('data-f')=='n')opts()});
+$('ed').addEventListener('click',function(e){var x=e.target.getAttribute('data-x');if(x===null||M.s.length<2)return;x=+x;M.s.splice(x,1);if(M.f==x||M.f>=M.s.length)M.f=0;else if(M.f>x)M.f--;edit();opts();reset(true)});
+$('add').onclick=function(){M.s.push({n:'New system',c:0,r:0,d:''});edit();opts();reset(true)};
+$('fs').onchange=function(){M.f=+this.value;reset(true)};
+$('rh').oninput=function(){M.R=Math.max(.1,parseFloat(this.value)||.1);reset(true)};
+d.querySelectorAll('[data-p]').forEach(function(b){b.onclick=function(){load(b.getAttribute('data-p'))}});
+d.querySelectorAll('[data-k]').forEach(function(b){b.onclick=function(){cur=b.getAttribute('data-k');d.querySelectorAll('[data-k]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});reset(true);$('go').click()}});
+load('store');})();
+</script>
+</body>
+</html>
